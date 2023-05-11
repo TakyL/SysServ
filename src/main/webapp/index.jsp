@@ -1,8 +1,11 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.logging.SimpleFormatter" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="tableau.Tableau" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:useBean id="personne" scope="request" class="com.example.tomcattraining.beans.Personne" />
+<jsp:useBean id="user" scope="request" class="com.example.tomcattraining.metiers.Utilisateur" />
+<jsp:useBean id="rdv" scope="request" class="com.example.tomcattraining.beans.Personne" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +27,11 @@
 
 <jsp:setProperty name="personne" property="nom" value="Adibouh" />
 <p>nom mise à jour = <jsp:getProperty name="personne" property="nom" /></p>
+<%
+    Tableau table = new Tableau();
+    String htmltable = table.AfficherJSP();
+%>
 
-
+<%= htmltable %>
 </body>
 </html>
