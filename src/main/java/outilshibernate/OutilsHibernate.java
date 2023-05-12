@@ -1,5 +1,6 @@
 package outilshibernate;
 
+import com.example.tomcattraining.metiers.RendezVous;
 import com.example.tomcattraining.metiers.Utilisateur;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,6 +21,7 @@ public class OutilsHibernate {
             configuration.setProperty("hibernate.connection.password", "sa");
             configuration.setProperty("hibernate.hbm2ddl.auto", "create");
             configuration.addAnnotatedClass(Utilisateur.class);
+            configuration.addAnnotatedClass(RendezVous.class);
             return configuration.buildSessionFactory();
         }
         catch (Throwable ex) {
