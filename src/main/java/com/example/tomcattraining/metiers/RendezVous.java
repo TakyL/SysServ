@@ -23,4 +23,20 @@ public class RendezVous {
     @Column(name = "heure")
     private String heure_rdv; //Heure au format RDV
 
+    public RendezVous(String nom_employe, String nom_client, Date date_rdv, String heure_rdv) {
+        this.nom_employe = nom_employe;
+        this.nom_client = nom_client;
+        this.date_rdv = date_rdv;
+        this.heure_rdv = heure_rdv;
+    }
+
+    public RendezVous()
+    {
+
+    }
+
+    @Override
+    public String toString() {
+        return nom_client+" a rdv avec "+nom_employe+" le "+date_rdv+" à "+ heure_rdv;
+    }
 }
