@@ -38,7 +38,6 @@ public class Main {
 
     public static void RemplitDatabase()
     {
-        System.out.println("Je suis lancé dans le futur");
         try (Session session = OutilsHibernate.getSession()) {
             session.beginTransaction();
 
