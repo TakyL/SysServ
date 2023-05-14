@@ -2,6 +2,7 @@
 <%@ page import="java.util.logging.SimpleFormatter" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="tableau.Tableau" %>
+<%@ page import="tableau.Bouton" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:useBean id="personne" scope="request" class="com.example.tomcattraining.beans.Personne" />
 <jsp:useBean id="user" scope="request" class="com.example.tomcattraining.metiers.Utilisateur" />
@@ -28,10 +29,31 @@
 <jsp:setProperty name="personne" property="nom" value="Adibouh" />
 <p>nom mise à jour = <jsp:getProperty name="personne" property="nom" /></p>
 <%
+    Bouton button = new Bouton("Click me!", "/hello-servlet2");
+%>
+<form id="myForm" method="POST">
+    <input type="hidden" name="buttonAction" value="<%= button.getAction() %>">
+</form>
+
+<button onclick="submitForm()"><%= button.getLabel() %></button>
+
+<script>
+    function submitForm() {
+        document.getElementById("myForm").action = '<%= request.getContextPath() %>' + document.getElementsByName("buttonAction")[0].value;
+        document.getElementById("myForm").submit();
+    }
+</script>
+<%
     Tableau table = new Tableau();
     String htmltable = table.AfficherJSP();
 %>
 
 <%= htmltable %>
+
+<script>
+    function redirectToUrl(url) {
+        location.href = url;
+    }
+</script>
 </body>
 </html>

@@ -46,6 +46,19 @@ public class HelloServlet extends HttpServlet {
 
     }
 
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        response.setContentType("text/html");
+        ServletContext context = getServletContext();
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>OK CA MARCHE</h1>");
+       /* for (Personne p : a) {
+            out.println(p.getNom() + " " + p.getPrenom());
+        }*/
+        out.println("<div>La servlet fonctionne</div>");
+        out.println("</body></html>");
+    }
     public void destroy() {
     }
 
