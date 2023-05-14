@@ -24,55 +24,20 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        ServletContext context = getServletContext();
-        PrintWriter out = response.getWriter();
-
-      // ArrayList<Personne> a =  test();
-
-        // Log a message using the LoggingListener
-        context.log("HelloServlet: doGet method called");
-
-    InitProcess();
-        // Hello
-
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-       /* for (Personne p : a) {
-            out.println(p.getNom() + " " + p.getPrenom());
-        }*/
-        out.println("<div>La servlet fonctionne</div>");
-        out.println("</body></html>");
 
     }
 
+    //Le post pour ajouter
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
-        response.setContentType("text/html");
-        ServletContext context = getServletContext();
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>OK CA MARCHE</h1>");
-       /* for (Personne p : a) {
-            out.println(p.getNom() + " " + p.getPrenom());
-        }*/
-        out.println("<div>La servlet fonctionne</div>");
-        out.println("</body></html>");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String email = request.getParameter("email");
+
+        //TODO:  vérif si il existe pas déjà et puis push dans la db
+
+        response.sendRedirect("index.jsp");
     }
     public void destroy() {
-    }
-
-
-    public ArrayList<Personne> test()
-    {
-        String url="jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1;INIT=create table TPERSONNE (NOM VARCHAR2(50), PRENOM VARCHAR2(100), ID INT PRIMARY KEY AUTO_INCREMENT);";
-        Connexion a = new Connexion(url);
-       return  a.renvoielistpersonne();
-    }
-
-    public void InitProcess()
-    {
-
-        Process p = new Process();
     }
 }

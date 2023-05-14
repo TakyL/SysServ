@@ -70,8 +70,11 @@ public class Tableau {
         // Print the table data
         for (int i = 0; i < getRowCount(); i++) {
             sb.append("<tr>");
+            String st = String.format("<input type='radio' name='r%d'>",i);
+
             for (int j = 0; j < getColumnCount(); j++) {
                 sb.append("<td>");
+                //sb.append(st);faudra rajouter la colonne modifier
                 sb.append(getValueAt(i, j));
                 sb.append("</td>");
             }
@@ -82,7 +85,7 @@ public class Tableau {
     }
 
     private void populateTable() {
-        System.out.println("POPULATE DE MERDE");
+
         // Establish a connection to the H2 database
         try (Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "")) {
             // Execute a SELECT query to retrieve data from the table

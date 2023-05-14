@@ -31,15 +31,15 @@
 <p>
     Date du jour : <%= new SimpleDateFormat("dd/MM/yyyy").format(new Date()) %>
         <a href="hello-servlet2" >Vers la Servlet</a>
-    <a href="hello-servlet3" >Vers la Servlet REST</a>
 <%@include file="html/test.html"%>
 
 <p>nom initial = <jsp:getProperty name="personne" property="nom" /></p>
 
 <jsp:setProperty name="personne" property="nom" value="Adibouh" />
 <p>nom mise à jour = <jsp:getProperty name="personne" property="nom" /></p>
+<%@include file="html/formajouter.html"%>
 <%
-    Bouton button = new Bouton("Ajouter", "/hello-servlet2");
+    Bouton button = new Bouton("Ajouter un RDV", "/hello-servlet2");
 %>
 <form id="myForm" method="POST">
     <input type="hidden" name="buttonAction" value="<%= button.getAction() %>">
