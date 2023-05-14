@@ -10,7 +10,7 @@ public class H2RendezVousFactory extends RendezVousDao {
 
     private static H2RendezVousFactory instance;
 
-    private List<RendezVous> data;
+    private final List<RendezVous> data;
 
     public static H2RendezVousFactory getInstance() {
 

@@ -6,11 +6,11 @@ public enum Role {
     CLIENT(2,"Client");
 
 
-    private int id;
+    private final int id;
 
-    private String designation;
+    private final String designation;
 
-    private Role(int id,String designation)
+    Role(int id,String designation)
     {
         this.id=id;
         this.designation=designation;

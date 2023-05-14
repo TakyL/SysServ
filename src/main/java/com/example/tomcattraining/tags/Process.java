@@ -61,7 +61,7 @@ public class Process {
         cobaye = recherche(cobaye);
         cobaye.setNom("Fabios");
         cobaye.setPrenom("Vendate");
-        System.out.println("TEST"+cobaye.toString());
+        System.out.println("TEST"+ cobaye);
         updatePersonne(cobaye);
         cobaye = recherche(cobaye);
         System.out.println(cobaye);

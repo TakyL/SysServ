@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Connexion {
-    private String url;
+    private final String url;
 
     private Connection co = null;
     public void CloseConnexion()

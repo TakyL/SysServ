@@ -62,7 +62,7 @@ public class RendezVous {
     {
         if(verifieStringNonVide(nom_client,nom_employe,date,heure))
         {
-            return (VerifieFormatHeure(heure) && isDateFormatted(formateDate(date))) ? true : false;
+            return VerifieFormatHeure(heure) && isDateFormatted(formateDate(date));
 
         }
         return false;

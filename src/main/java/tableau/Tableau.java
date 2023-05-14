@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class Tableau {
 
-    private JTable tableau;
+    private final JTable tableau;
 
     public Tableau(DefaultTableModel model) {
         // Create a new table model with 0 rows and 4 columns

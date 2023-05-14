@@ -1,8 +1,8 @@
 package tableau;
 
 public class Bouton {
-    private String label;
-    private String action;
+    private final String label;
+    private final String action;
 
     public Bouton(String label, String action) {
         this.label = label;

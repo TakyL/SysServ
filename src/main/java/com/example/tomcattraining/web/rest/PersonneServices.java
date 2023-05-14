@@ -16,7 +16,7 @@ public class PersonneServices {
     public Object getPersonne(@PathParam("id") int id)
     {
         PersonneRest objet= new PersonneRest("BENJAMIN","POIRROT");
-        out.println(objet.toString());
+        out.println(objet);
         return objet;
     }
 

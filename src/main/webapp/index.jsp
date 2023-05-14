@@ -4,12 +4,9 @@
 <%@ page import="tableau.Tableau" %>
 <%@ page import="tableau.Bouton" %>
 
-<%@ page import="outilshibernate.OutilsHibernate" %>
 <%@ page import="com.example.tomcattraining.metiers.RendezVous" %>
 <%@ page import="java.util.List" %>
 <%@ page import="javax.swing.table.DefaultTableModel" %>
-<%@ page import="org.hibernate.SharedSessionContract" %>
-<%@ page import="org.hibernate.Session" %>
 <%@ page import="static outilshibernate.Main.RemplitDatabase" %>
 <%@ page import="outilshibernate.QueryRdv" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -24,14 +21,13 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body >
-<h1><%= "Hello World!" %>
+<h1><%= "Annuaire " %>
 </h1>
 
 <br/>
 <p>
     Date du jour : <%= new SimpleDateFormat("dd/MM/yyyy").format(new Date()) %>
         <a href="hello-servlet2" >Vers la Servlet</a>
-<%@include file="html/test.html"%>
 
 <p>nom initial = <jsp:getProperty name="personne" property="nom" /></p>
 
@@ -79,10 +75,5 @@
 
 <%= htmltable %>
 
-<script>
-    function redirectToUrl(url) {
-        location.href = url;
-    }
-</script>
 </body>
 </html>
