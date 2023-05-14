@@ -5,7 +5,17 @@ import com.example.tomcattraining.metiers.Utilisateur;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
+import org.hibernate.tool.schema.TargetType;
+import org.reflections.Reflections;
+
+import javax.persistence.Entity;
+import java.io.File;
+import java.util.EnumSet;
+import java.util.Properties;
 
 public class OutilsHibernate {
 

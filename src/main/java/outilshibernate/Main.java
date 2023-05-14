@@ -35,4 +35,25 @@ public class Main {
             session.getTransaction().commit();
         }
     }
+
+    public static void RemplitDatabase()
+    {
+        System.out.println("Je suis lancé dans le futur");
+        try (Session session = OutilsHibernate.getSession()) {
+            session.beginTransaction();
+
+            // create a new user
+            Utilisateur user = new Utilisateur("John", "Doe");
+            Utilisateur user2 = new Utilisateur("Mary","Sue");
+            session.save(user);
+            session.save(user2);
+            RendezVous rdv = new RendezVous(user.getNom(), user2.getNom(), new Date(),"10:11");
+            RendezVous rdv1 = new RendezVous("Bonjour","Bonsoir",new Date(),"10:25");
+            session.save(rdv);
+            session.save(rdv1);
+
+
+            session.getTransaction().commit();
+        }
+    }
 }

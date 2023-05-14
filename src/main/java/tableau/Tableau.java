@@ -5,17 +5,19 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import java.sql.*;
 
 public class Tableau {
 
     private JTable tableau;
 
-    public Tableau() {
+    public Tableau(DefaultTableModel model) {
         // Create a new table model with 0 rows and 4 columns
-        DefaultTableModel model = new DefaultTableModel(new Object[][] {},
-                new String[] { "Date ", "Heure", "Client", "Employé" });
+   //     DefaultTableModel model = new DefaultTableModel(new Object[][] {},
+      //          new String[] { "Date ", "Heure", "Client", "Employé" });
         // Create a new JTable with the custom table model
         tableau = new JTable(model);
+        populateTable();
 
     }
 
@@ -77,6 +79,30 @@ public class Tableau {
         }
         sb.append("</table>");
         return sb.toString();
+    }
+
+    private void populateTable() {
+        System.out.println("POPULATE DE MERDE");
+        // Establish a connection to the H2 database
+        try (Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "")) {
+            // Execute a SELECT query to retrieve data from the table
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Rdv");
+            // Iterate over the result set and add the data to the table model
+            DefaultTableModel model = (DefaultTableModel) tableau.getModel();
+            while (rs.next()) {
+                Object[] row = new Object[4];
+                row[0] = rs.getDate("date");
+                row[1] = rs.getString("heure");
+                row[2] = rs.getString("client");
+                row[3] = rs.getString("employe");
+                model.addRow(row);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

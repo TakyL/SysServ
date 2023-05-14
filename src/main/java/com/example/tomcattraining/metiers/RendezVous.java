@@ -39,4 +39,44 @@ public class RendezVous {
     public String toString() {
         return nom_client+" a rdv avec "+nom_employe+" le "+date_rdv+" à "+ heure_rdv;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNom_employe() {
+        return nom_employe;
+    }
+
+    public void setNom_employe(String nom_employe) {
+        this.nom_employe = nom_employe;
+    }
+
+    public String getNom_client() {
+        return nom_client;
+    }
+
+    public void setNom_client(String nom_client) {
+        this.nom_client = nom_client;
+    }
+
+    public Date getDate_rdv() {
+        return date_rdv;
+    }
+
+    public void setDate_rdv(Date date_rdv) {
+        this.date_rdv = date_rdv;
+    }
+
+    public String getHeure_rdv() {
+        return heure_rdv;
+    }
+
+    public void setHeure_rdv(String heure_rdv) {
+        this.heure_rdv = heure_rdv;
+    }
 }

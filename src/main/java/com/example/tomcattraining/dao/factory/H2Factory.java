@@ -5,6 +5,6 @@ import com.example.tomcattraining.dao.RendezVousDao;
 public class H2Factory extends DaoFactory{
     @Override
     public RendezVousDao getRendezVousDao() {
-        return null;
+        return  H2RendezVousFactory.getInstance();
     }
 }

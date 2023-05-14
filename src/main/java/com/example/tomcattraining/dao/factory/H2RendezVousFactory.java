@@ -36,18 +36,18 @@ public class H2RendezVousFactory extends RendezVousDao {
     }
 
     @Override
-    public boolean create(RendezVous objet) {
-        return super.create(objet);
+    public void create(RendezVous objet) {
+         super.create(objet);
     }
 
     @Override
-    public boolean update(RendezVous objet) {
-        return super.update(objet);
+    public void update(RendezVous objet) {
+         super.update(objet);
     }
 
     @Override
-    public boolean delete(RendezVous objet) {
-        return super.delete(objet);
+    public void delete(RendezVous objet) {
+         super.delete(objet);
     }
 
     @Override
