@@ -3,6 +3,9 @@ package com.example.tomcattraining.metiers;
 import javax.persistence.*;
 import java.util.Date;
 
+import static com.example.tomcattraining.outilsdateetheures.OutilsDatesHeures.*;
+import static com.example.tomcattraining.outilsdateetheures.OutilsDatesHeures.formateDate;
+
 @Entity//With hibernate
 @Table(name = "Rdv")
 public class RendezVous {
@@ -30,9 +33,39 @@ public class RendezVous {
         this.heure_rdv = heure_rdv;
     }
 
+    public RendezVous(String nom_employe, String nom_client, String date_rdv, String heure_rdv) {
+        if(Controle(nom_employe,nom_client,date_rdv,heure_rdv))
+        {
+            this.nom_employe = nom_employe;
+            this.nom_client = nom_client;
+            this.date_rdv = formateDate(date_rdv);
+            this.heure_rdv = heure_rdv;
+        }
+
+    }
+
     public RendezVous()
     {
 
+    }
+
+    /**
+     * Vérifie si tout est ok
+     * @param nom_employe
+     * @param nom_client
+     * @param date
+     * @param heure
+     * @return
+     */
+
+    private boolean Controle(String nom_employe,String nom_client,String date,String heure)
+    {
+        if(verifieStringNonVide(nom_client,nom_employe,date,heure))
+        {
+            return (VerifieFormatHeure(heure) && isDateFormatted(formateDate(date))) ? true : false;
+
+        }
+        return false;
     }
 
     @Override
