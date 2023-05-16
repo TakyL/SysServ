@@ -1,10 +1,8 @@
 package com.example.tomcattraining.metiers;
 
 import javax.persistence.*;
-import java.util.Date;
 
-import static com.example.tomcattraining.outilsdateetheures.OutilsDatesHeures.*;
-import static com.example.tomcattraining.outilsdateetheures.OutilsDatesHeures.formateDate;
+import static com.example.tomcattraining.outils.OutilsDatesHeures.*;
 
 @Entity//With hibernate
 @Table(name = "Rdv")
@@ -21,17 +19,10 @@ public class RendezVous {
     private String nom_client;
 
     @Column(name = "date")
-    private Date date_rdv;//Date au format dd/mmmm/yyyy
+    private String date_rdv;//Date au format dd/mmmm/yyyy
 
     @Column(name = "heure")
     private String heure_rdv; //Heure au format RDV
-
-    public RendezVous(String nom_employe, String nom_client, Date date_rdv, String heure_rdv) {
-        this.nom_employe = nom_employe;
-        this.nom_client = nom_client;
-        this.date_rdv = date_rdv;
-        this.heure_rdv = heure_rdv;
-    }
 
     public RendezVous(String nom_employe, String nom_client, String date_rdv, String heure_rdv) {
         if(Controle(nom_employe,nom_client,date_rdv,heure_rdv))
@@ -41,7 +32,6 @@ public class RendezVous {
             this.date_rdv = formateDate(date_rdv);
             this.heure_rdv = heure_rdv;
         }
-
     }
 
     public RendezVous()
@@ -60,9 +50,10 @@ public class RendezVous {
 
     private boolean Controle(String nom_employe,String nom_client,String date,String heure)
     {
+       // System.out.println("CHECK"+nom_employe+nom_client+date+heure);
         if(verifieStringNonVide(nom_client,nom_employe,date,heure))
         {
-            return VerifieFormatHeure(heure) && isDateFormatted(formateDate(date));
+            return VerifieFormatHeure(heure) && isFormatAccepted((date));
 
         }
         return false;
@@ -97,11 +88,11 @@ public class RendezVous {
         this.nom_client = nom_client;
     }
 
-    public Date getDate_rdv() {
+    public String getDate_rdv() {
         return date_rdv;
     }
 
-    public void setDate_rdv(Date date_rdv) {
+    public void setDate_rdv(String date_rdv) {
         this.date_rdv = date_rdv;
     }
 

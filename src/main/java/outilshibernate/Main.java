@@ -18,7 +18,7 @@ public class Main {
             Utilisateur user2 = new Utilisateur("Mary","Sue");
             session.save(user);
             session.save(user2);
-            RendezVous rdv = new RendezVous(user.getNom(), user2.getNom(), new Date(),"10:10");
+            RendezVous rdv = new RendezVous(user.getNom(), user2.getNom(), "10/02/2022","10:10");
             session.save(rdv);
 
             // retrieve the user from the database
@@ -46,8 +46,8 @@ public class Main {
             Utilisateur user2 = new Utilisateur("Mary","Sue");
             session.save(user);
             session.save(user2);
-            RendezVous rdv = new RendezVous(user.getNom(), user2.getNom(), new Date(),"10:11");
-            RendezVous rdv1 = new RendezVous("Bonjour","Bonsoir",new Date(),"10:25");
+            RendezVous rdv = new RendezVous(user.getNom(), user2.getNom(), "24/24/2024","10:11");
+            RendezVous rdv1 = new RendezVous("Bonjour","Bonsoir","10/10/2010","10:25");
             session.save(rdv);
             session.save(rdv1);
 

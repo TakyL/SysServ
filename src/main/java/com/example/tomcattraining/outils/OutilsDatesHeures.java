@@ -18,6 +18,12 @@ public class OutilsDatesHeures {
         return Pattern.matches(regex, formatdate);
     }
 
+    static public boolean isFormatAccepted(String value)
+    {
+        if(isFormatYYYYMMDD(value) || isFormatddMMyyyy(value)) return true;
+        else return false;
+    }
+
     /**
      * Formatte un string date au format dd/mm/yyyy si besoin
      * @param input : String au format yyyy/mm/dd
@@ -28,7 +34,7 @@ public class OutilsDatesHeures {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
 
-        return FormateDateYYYYMMDDtoDDMMYYYY(input);
+        return gestionFormatDate(input);
 
     }
 
@@ -38,7 +44,7 @@ public class OutilsDatesHeures {
      * @return Date au format dd/mm/yyyy
      * @throws RuntimeException si le format saisi ne correspond ni à dd/mm/yyyy
      */
-    static private String FormateDateYYYYMMDDtoDDMMYYYY(String input) {
+    static private String gestionFormatDate(String input) {
         SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             if(isFormatYYYYMMDD(input))
@@ -58,10 +64,16 @@ public class OutilsDatesHeures {
         }
     }
 
+    /**
+     * Vérifie si le string est au format yyyy/mm/dd ou au format yyyy-mm-dd
+     * @param string
+     * @return
+     */
     static private boolean isFormatYYYYMMDD(String string)
     {
+
         String regex = "^\\d{4}/\\d{2}/\\d{2}$";
-        return Pattern.matches(regex, string);
+        return Pattern.matches(regex, string) || Pattern.matches("^\\d{4}-\\d{2}-\\d{2}$", string);
     }
     /**
      * Vérifie le format de l'heure

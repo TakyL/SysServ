@@ -1,4 +1,4 @@
-<form action="ajoutRdv" method="post">
+
   <label for="client">Nom du client</label>
   <input type="text" id="client" name="nom_cl" required>
   <br>
@@ -11,5 +11,10 @@
   <input type="time" id="heurerdv" name="heurerdv" value="10:30"
           required>
   <br>
-  <!--<button type="submit" value ="/hello-servlet2" id="ajout" onclick="submitForm()">Ajouter Table</button>-->
-</form>
+
+<script>
+  function submitForm() {
+    document.getElementById("myForm").action = '<%= request.getContextPath() %>' + document.getElementsByName("buttonAction")[0].value;
+    document.getElementById("myForm").submit();
+  }
+</script>

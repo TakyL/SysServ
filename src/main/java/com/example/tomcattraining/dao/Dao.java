@@ -1,6 +1,7 @@
 package com.example.tomcattraining.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface Dao<T> {
     T getById(int id);
@@ -8,6 +9,6 @@ public interface Dao<T> {
     void update(T objet) ;
     void delete(T objet) ;
 
-    ArrayList<T> findAll();
+    List<T> findAll();
 
 }

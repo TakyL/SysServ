@@ -1,6 +1,5 @@
 package com.example.tomcattraining.web.rest;
 
-import com.example.tomcattraining.Connexion;
 import com.example.tomcattraining.beans.Personne;
 import com.example.tomcattraining.beans.PersonneRest;
 import jakarta.ws.rs.*;

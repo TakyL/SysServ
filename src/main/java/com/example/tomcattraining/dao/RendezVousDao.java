@@ -1,15 +1,19 @@
 package com.example.tomcattraining.dao;
 
 import com.example.tomcattraining.metiers.RendezVous;
+import com.example.tomcattraining.metiers.Utilisateur;
+import org.hibernate.Session;
+import outilshibernate.OutilsHibernate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RendezVousDao implements Dao<RendezVous> {
 
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("testH2");
+    //private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("testH2");//FIXME Declenche des erreurs via des createtables
     @Override
     public RendezVous getById(int id) {
         return null;
@@ -17,34 +21,39 @@ public class RendezVousDao implements Dao<RendezVous> {
 
     @Override
     public void create(RendezVous objet) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(objet);
-        em.getTransaction().commit();
-        em.close();
+        try (Session session = OutilsHibernate.getSession()) {
+            session.beginTransaction();
+
+            RendezVous rdv = objet;
+            session.save(rdv);
+
+            session.getTransaction().commit();
+            System.out.println("Objet Rdv ajouté à la db ");
+        }
+
     }
 
     @Override
     public void update(RendezVous objet) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.merge(objet);
-        em.getTransaction().commit();
-        em.close();
+//        EntityManager em = emf.createEntityManager();
+//        em.getTransaction().begin();
+//        em.merge(objet);
+//        em.getTransaction().commit();
+//        em.close();
 
     }
 
     @Override
     public void delete(RendezVous objet) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.remove(objet);
-        em.getTransaction().commit();
-        em.close();
+//        EntityManager em = emf.createEntityManager();
+//        em.getTransaction().begin();
+//        em.remove(objet);
+//        em.getTransaction().commit();
+//        em.close();
     }
 
     @Override
-    public ArrayList<RendezVous> findAll() {
-        return  null;
+    public List<RendezVous> findAll() {
+        return   OutilsHibernate.getSession().createQuery("FROM RendezVous", RendezVous.class).list();
     }
 }

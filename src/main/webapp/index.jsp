@@ -33,22 +33,18 @@
 
 <jsp:setProperty name="personne" property="nom" value="Adibouh" />
 <p>nom mise à jour = <jsp:getProperty name="personne" property="nom" /></p>
-<%@include file="html/formajouter.html"%>
+
 <%
     Bouton button = new Bouton("Ajouter un RDV", "/hello-servlet2");
 %>
 <form id="myForm" method="POST">
+    <%@include file="html/formajouter.html"%>
     <input type="hidden" name="buttonAction" value="<%= button.getAction() %>">
 </form>
 
 <button onclick="submitForm()"><%= button.getLabel() %></button>
 
-<script>
-    function submitForm() {
-        document.getElementById("myForm").action = '<%= request.getContextPath() %>' + document.getElementsByName("buttonAction")[0].value;
-        document.getElementById("myForm").submit();
-    }
-</script>
+
 <%
     if (application.getAttribute("dataAdded") == null) {
         RemplitDatabase();
