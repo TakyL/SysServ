@@ -17,7 +17,6 @@ public class Tableau {
       //          new String[] { "Date ", "Heure", "Client", "Employé" });
         // Create a new JTable with the custom table model
         tableau = new JTable(model);
-        populateTable();
 
     }
 
@@ -82,30 +81,6 @@ public class Tableau {
         }
         sb.append("</table>");
         return sb.toString();
-    }
-
-    private void populateTable() {
-
-        // Establish a connection to the H2 database
-        try (Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "")) {
-            // Execute a SELECT query to retrieve data from the table
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Rdv");
-            // Iterate over the result set and add the data to the table model
-            DefaultTableModel model = (DefaultTableModel) tableau.getModel();
-            while (rs.next()) {
-                Object[] row = new Object[4];
-                row[0] = rs.getDate("date");
-                row[1] = rs.getString("heure");
-                row[2] = rs.getString("client");
-                row[3] = rs.getString("employe");
-                model.addRow(row);
-            }
-            rs.close();
-            stmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 }
