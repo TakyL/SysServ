@@ -1,4 +1,4 @@
-package com.example.tomcattraining.outilsdateetheures;
+package com.example.tomcattraining.outils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
