@@ -58,6 +58,7 @@ public class Tableau {
         // Print the column headers
         sb.append("<tr>");
         TableColumnModel columnModel = getColumnModel();
+        sb.append("<th> Modifier </th>");
         for (int i = 0; i < columnModel.getColumnCount(); i++) {
             TableColumn column = columnModel.getColumn(i);
             String columnName = (String) column.getHeaderValue();
@@ -69,11 +70,12 @@ public class Tableau {
         // Print the table data
         for (int i = 0; i < getRowCount(); i++) {
             sb.append("<tr>");
-            String st = String.format("<input type='radio' name='r%d'>",i);
-
+            String st = String.format("<td><input type='radio' name='r%d'></td>",i);
+            sb.append(st);//faudra rajouter la colonne modifier
             for (int j = 0; j < getColumnCount(); j++) {
+
                 sb.append("<td>");
-                //sb.append(st);faudra rajouter la colonne modifier
+
                 sb.append(getValueAt(i, j));
                 sb.append("</td>");
             }
