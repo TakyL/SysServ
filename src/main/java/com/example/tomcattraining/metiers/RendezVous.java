@@ -2,11 +2,13 @@ package com.example.tomcattraining.metiers;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
+
 import static com.example.tomcattraining.outils.OutilsDatesHeures.*;
 
 @Entity//With hibernate
 @Table(name = "Rdv")
-public class RendezVous {
+public class RendezVous implements Serializable {
 
     @Id
     @GeneratedValue
@@ -61,7 +63,7 @@ public class RendezVous {
 
     @Override
     public String toString() {
-        return nom_client+" a rdv avec "+nom_employe+" le "+date_rdv+" à "+ heure_rdv;
+        return id+"/"+nom_client+" a rdv avec "+nom_employe+" le "+date_rdv+" à "+ heure_rdv;
     }
 
     public int getId() {

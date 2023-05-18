@@ -32,13 +32,30 @@ public class IndexServlet extends HttpServlet {
         String nomemploye = request.getParameter("nom_emp");
         String rdvdate = request.getParameter("rdvdate");
         String heure = request.getParameter("heurerdv");
+        String idrdv =request.getParameter("idrdv");
 
-        System.out.println("Valeur saisie : "+nomclient+"/"+nomemploye+"/"+rdvdate+"/"+heure);
+        System.out.println("Valeur saisie : "+nomclient+"/"+nomemploye+"/"+rdvdate+"/"+heure+"/"+idrdv);
         RendezVous ajoutRdv = new RendezVous(nomemploye,nomclient,rdvdate,heure);
         System.out.println("Rdv crée : "+ajoutRdv);
-        new QueryRdv().insertItem(ajoutRdv);
-
         response.sendRedirect("index.jsp");
+
+        if(!idrdv.equals("null")) //Cas mise à jour
+        {
+            RendezVous updateRdv = ajoutRdv;
+            updateRdv.setId(Integer.parseInt(idrdv)+1);//Permet d'assurer la recherche de l'id
+            new QueryRdv().updateItem(updateRdv);
+        }
+        else
+        {
+            if(new QueryRdv().insertItem(ajoutRdv)==false)//Si l'ajout n'est pas réalisé
+            {
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                response.getWriter().write("Failed to add rendezvous");
+            }
+        }
+
+
+
     }
     public void destroy() {
     }

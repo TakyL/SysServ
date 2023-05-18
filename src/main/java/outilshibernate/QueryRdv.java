@@ -35,6 +35,17 @@ public class QueryRdv implements Query{
         return false;
     }
 
+    @Override
+    public boolean updateItem(Object item) {
+        if(!isAlreadyExisting((RendezVous) item) && !hasAlreadyaRdv((RendezVous) item))
+        {
+            new RendezVousDao().update((RendezVous) item);
+            return true;
+        }
+
+        return false;
+    }
+
 
     /**
      * Vérifie si un rendez vous existe déjà dans la base de données

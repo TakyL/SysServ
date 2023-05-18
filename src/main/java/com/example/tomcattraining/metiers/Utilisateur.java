@@ -48,6 +48,15 @@ public class Utilisateur implements Serializable {
         return nom;
     }
 
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                '}';
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
     }

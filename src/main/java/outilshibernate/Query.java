@@ -16,4 +16,6 @@ public interface Query<T> {
 
     public boolean insertItem(T item);
 
+    public boolean updateItem(T item);
+
 }

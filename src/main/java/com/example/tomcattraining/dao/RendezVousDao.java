@@ -3,6 +3,7 @@ package com.example.tomcattraining.dao;
 import com.example.tomcattraining.metiers.RendezVous;
 import com.example.tomcattraining.metiers.Utilisateur;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import outilshibernate.OutilsHibernate;
 
 import javax.persistence.EntityManager;
@@ -35,11 +36,13 @@ public class RendezVousDao implements Dao<RendezVous> {
 
     @Override
     public void update(RendezVous objet) {
-//        EntityManager em = emf.createEntityManager();
-//        em.getTransaction().begin();
-//        em.merge(objet);
-//        em.getTransaction().commit();
-//        em.close();
+        try (Session session = OutilsHibernate.getSession()) {
+            session.beginTransaction();
+            session.update(objet);
+            session.getTransaction().commit();
+            System.out.println("Objet Rdv modifie à la db ");
+        }
+
 
     }
 

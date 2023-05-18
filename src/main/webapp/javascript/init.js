@@ -102,6 +102,7 @@ function setDataInputUpdate(element)
     document.querySelector("input#heurerdv").value = data[2]
     document.querySelector("input#client").value =data[3]
     document.querySelector("input#emp").value =data[4]
+    document.querySelector("input[type='hidden']").value = element.id.substring(1)
 
 }
 
