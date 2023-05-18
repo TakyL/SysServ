@@ -151,5 +151,30 @@ function retablieajout()
 
     }
 }
+
+/**
+ * Permet de charger la date et l'heure du jour lors du chargement de la page
+ */
+
+function initDate()
+{
+    setDateInput(new Date().toLocaleDateString()) //Charge la date du jour
+    const heure = `${new Date().getHours()}:${reglageminutes()}`;
+    document.querySelector('input#heurerdv').value = heure;
+}
+
+/**
+ * Permet d'ajouter un 0 si necessaire
+ * @returns {number|string}
+ */
+function reglageminutes()
+{
+    const min = new Date().getMinutes();
+    if(min.toString().length===1) return `0${min}`;
+    else return min;
+}
+
 addlistener();
-retablieajout()
+retablieajout();
+initDate()
+
