@@ -135,4 +135,21 @@ function ClearRadioCheck(element)
     })
 }
 
+/**
+ * Rétablie Ajouter un Rdv après une modification d'un rdv
+ */
+function retablieajout()
+{
+    if(document.querySelector("input[type='hidden']").value != "null" )
+    {
+        document.querySelector("input[type='hidden']").value ==null;
+        document.querySelector("button").innerText="Ajouter un rdv";
+        let liste = document.querySelectorAll("input[type='radio']");
+        liste.forEach(element=> {
+            if(element.checked==true) element.checked=false;
+        });
+
+    }
+}
 addlistener();
+retablieajout()
