@@ -70,7 +70,7 @@ public class Tableau {
         // Print the table data
         for (int i = 0; i < getRowCount(); i++) {
             sb.append("<tr>");
-            String st = String.format("<td><input type='radio' name='r%d'></td>",i);
+            String st = String.format("<td><input type='radio' id='r%d'></td>",i);
             sb.append(st);//faudra rajouter la colonne modifier
             for (int j = 0; j < getColumnCount(); j++) {
 
