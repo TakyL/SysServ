@@ -54,7 +54,7 @@ public class Tableau {
 
     public String AfficherJSP() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<table>");
+        sb.append("<table class='table'>");
         // Print the column headers
         sb.append("<tr>");
         TableColumnModel columnModel = getColumnModel();
@@ -71,7 +71,7 @@ public class Tableau {
         for (int i = 0; i < getRowCount(); i++) {
             sb.append("<tr>");
             String st = String.format("<td><input type='radio' id='r%d'></td>",i);
-            sb.append(st);//faudra rajouter la colonne modifier
+            sb.append(st);
             for (int j = 0; j < getColumnCount(); j++) {
 
                 sb.append("<td>");
