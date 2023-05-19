@@ -1,4 +1,4 @@
-package com.example.tomcattraining;
+package com.example.tomcattraining.erreur;
 
 public class MessageServeur {
 

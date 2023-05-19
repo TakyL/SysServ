@@ -1,6 +1,7 @@
-package com.example.tomcattraining;
+package com.example.tomcattraining.servlet;
 
 
+import com.example.tomcattraining.erreur.MessageServeur;
 import com.example.tomcattraining.metiers.RendezVous;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,7 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import java.io.*;
 
 import jakarta.servlet.http.*;
-import outilshibernate.QueryRdv;
+import com.example.tomcattraining.outilshibernate.QueryRdv;
 //import javax.servlet.http.HttpServlet;
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
@@ -68,7 +69,7 @@ public class IndexServlet extends HttpServlet {
 
     private void EnvoieMsgErreurJsp(HttpServletRequest request,HttpServletResponse response)
     {
-        String sendedmsg=MessageServeur.msg;
+        String sendedmsg= MessageServeur.msg;
         request.setAttribute("errormsg",sendedmsg);
         try {
             System.out.println("Envoie du msg cote servlet "+sendedmsg);

@@ -1,20 +1,13 @@
 package com.example.tomcattraining.dao;
 
 import com.example.tomcattraining.metiers.RendezVous;
-import com.example.tomcattraining.metiers.Utilisateur;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
-import outilshibernate.OutilsHibernate;
+import com.example.tomcattraining.outilshibernate.OutilsHibernate;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RendezVousDao implements Dao<RendezVous> {
 
-    //private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("testH2");//FIXME Declenche des erreurs via des createtables
     @Override
     public RendezVous getById(int id) {
         return null;

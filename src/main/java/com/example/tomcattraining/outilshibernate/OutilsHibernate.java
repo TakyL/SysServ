@@ -1,4 +1,4 @@
-package outilshibernate;
+package com.example.tomcattraining.outilshibernate;
 
 import com.example.tomcattraining.metiers.RendezVous;
 import com.example.tomcattraining.metiers.Utilisateur;

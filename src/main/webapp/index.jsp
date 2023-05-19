@@ -1,18 +1,16 @@
-        <%@ page import="java.util.Date" %>
+<%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="tableau.Tableau" %>
-<%@ page import="tableau.Bouton" %>
-
+<%@ page import="com.example.tomcattraining.tableau.Tableau" %>
+<%@ page import="com.example.tomcattraining.tableau.Bouton" %>
 <%@ page import="com.example.tomcattraining.metiers.RendezVous" %>
 <%@ page import="java.util.List" %>
 <%@ page import="javax.swing.table.DefaultTableModel" %>
-<%@ page import="static outilshibernate.Main.RemplitDatabase" %>
-<%@ page import="outilshibernate.QueryRdv" %>
-        <%@ page import="com.example.tomcattraining.MessageServeur" %>
-        <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<jsp:useBean id="personne" scope="request" class="com.example.tomcattraining.beans.Personne" />
-        <jsp:useBean id="user" scope="request" class="com.example.tomcattraining.metiers.Utilisateur" />
-        <jsp:useBean id="rdv" scope="request" class="com.example.tomcattraining.metiers.RendezVous" />
+<%@ page import="static com.example.tomcattraining.outilshibernate.Main.RemplitDatabase" %>
+<%@ page import="com.example.tomcattraining.outilshibernate.QueryRdv" %>
+<%@ page import="com.example.tomcattraining.erreur.MessageServeur" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<jsp:useBean id="user" scope="request" class="com.example.tomcattraining.metiers.Utilisateur" />
+<jsp:useBean id="rdv" scope="request" class="com.example.tomcattraining.metiers.RendezVous" />
 
 <!DOCTYPE html>
 <html>

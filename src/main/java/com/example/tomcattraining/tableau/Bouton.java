@@ -1,4 +1,4 @@
-package tableau;
+package com.example.tomcattraining.tableau;
 
 public class Bouton {
     private final String label;

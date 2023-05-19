@@ -1,11 +1,9 @@
-package outilshibernate;
+package com.example.tomcattraining.outilshibernate;
 
 import com.example.tomcattraining.metiers.RendezVous;
 import com.example.tomcattraining.metiers.Utilisateur;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-
-import java.util.Date;
 
 public class Main {
 

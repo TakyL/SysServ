@@ -20,14 +20,14 @@ h1
     margin-left:0.5vh;
     margin-right:0.5vh;
 }
-input
-{
-    margin-bottom: 1.5vh;
-    margin-top:1vh
-}
 .erreur
 {
     font-size: 25px;
     color: red;
     font-weight: bolder;
+}
+input
+{
+    margin-bottom: 1.5vh;
+    margin-top:1vh
 }

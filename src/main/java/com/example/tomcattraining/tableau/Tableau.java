@@ -1,4 +1,4 @@
-package tableau;
+package com.example.tomcattraining.tableau;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

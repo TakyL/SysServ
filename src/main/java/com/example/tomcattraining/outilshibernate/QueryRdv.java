@@ -1,6 +1,6 @@
-package outilshibernate;
+package com.example.tomcattraining.outilshibernate;
 
-import com.example.tomcattraining.MessageServeur;
+import com.example.tomcattraining.erreur.MessageServeur;
 import com.example.tomcattraining.dao.RendezVousDao;
 import com.example.tomcattraining.metiers.RendezVous;
 import org.hibernate.Session;
