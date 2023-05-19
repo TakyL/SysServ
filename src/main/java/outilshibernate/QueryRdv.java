@@ -1,5 +1,6 @@
 package outilshibernate;
 
+import com.example.tomcattraining.MessageServeur;
 import com.example.tomcattraining.dao.RendezVousDao;
 import com.example.tomcattraining.metiers.RendezVous;
 import org.hibernate.Session;
@@ -50,7 +51,7 @@ public class QueryRdv implements Query{
     /**
      * Vérifie si un rendez vous existe déjà dans la base de données
      * @param rdv
-     * @return
+     * @return true si le rendez vous existe et set le message d'erreur pour l'affichage du client dans la servlet
      */
 
     private boolean isAlreadyExisting(RendezVous rdv) {
@@ -62,7 +63,7 @@ public class QueryRdv implements Query{
                 if(verifieSiChainesEquivalentes(r.getHeure_rdv(),rdv.getHeure_rdv()) && verifieSiChainesEquivalentes(r.getNom_employe(),rdv.getNom_employe()) && verifieSiChainesEquivalentes(rdv.getNom_client(),r.getNom_client()))
                 {
                     System.out.println("Ce rendez vous existe déjà");
-                    //TODO print au client
+                    new MessageServeur().setMsg_RDV_existe();//Message de retour
                     return true;
                 }
             }
@@ -73,7 +74,7 @@ public class QueryRdv implements Query{
     /**
      * Recherche si le client/employé possède déjà un rendez vous pour cette tranche horaire
      * @param rdv : le rendez vous que l'on veut ajouter
-     * @return true si client/employé possède déjà un rendez vous pour cette tranche horaire
+     * @return true si client/employé possède déjà un rendez vous pour cette tranche horaire et set le message d'erreur pour l'affichage dans la jsp
      */
     private boolean hasAlreadyaRdv(RendezVous rdv) {
 
@@ -85,8 +86,7 @@ public class QueryRdv implements Query{
                 //Si nom est égale ou bien de le nom de l'employé a été trouvé alors il a déjà un rdv pour cette tranche horaire
                 if(verifieSiChainesEquivalentes(rdv.getNom_employe(),r.getNom_employe()) || verifieSiChainesEquivalentes(rdv.getNom_client(),r.getNom_client()))//Si le nom d'un employé est egale à ce nom alors
                 {
-                    System.out.println("L'un de deux utilisateurs possède déjà un rdv");
-                    //TODO print au client
+                    new MessageServeur().setMsg_RDV_emp_cl();
                     return true;
                 }
             }

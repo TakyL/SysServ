@@ -1,4 +1,4 @@
-<%@ page import="java.util.Date" %>
+        <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="tableau.Tableau" %>
 <%@ page import="tableau.Bouton" %>
@@ -8,10 +8,11 @@
 <%@ page import="javax.swing.table.DefaultTableModel" %>
 <%@ page import="static outilshibernate.Main.RemplitDatabase" %>
 <%@ page import="outilshibernate.QueryRdv" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+        <%@ page import="com.example.tomcattraining.MessageServeur" %>
+        <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:useBean id="personne" scope="request" class="com.example.tomcattraining.beans.Personne" />
-<jsp:useBean id="user" scope="request" class="com.example.tomcattraining.metiers.Utilisateur" />
-<jsp:useBean id="rdv" scope="request" class="com.example.tomcattraining.metiers.RendezVous" />
+        <jsp:useBean id="user" scope="request" class="com.example.tomcattraining.metiers.Utilisateur" />
+        <jsp:useBean id="rdv" scope="request" class="com.example.tomcattraining.metiers.RendezVous" />
 
 <!DOCTYPE html>
 <html>
@@ -27,48 +28,62 @@
 
 </head>
 <body >
-<h1><%= "Annuaire " %></h1>
+<h1><%="Annuaire "%></h1>
 
 <br/>
 <p>
-    Date du jour : <%= new SimpleDateFormat("dd/MM/yyyy").format(new Date()) %>
+    Date du jour : <%=new SimpleDateFormat("dd/MM/yyyy").format(new Date())%>
 
-<%
-    Bouton button = new Bouton("Ajouter un RDV", "/hello-servlet2");
-%>
+        <%
+                Bouton button = new Bouton("Ajouter un RDV", "/hello-servlet2");
+                %>
 <form id="myForm" method="POST" class="styleform">
     <%@include file="html/formajouter.html"%>
-    <input type="hidden" name="buttonAction" value="<%= button.getAction() %>">
+    <input type="hidden" name="buttonAction" value="<%=button.getAction()%>">
 </form>
 <div class="stylebtn">
-<button onclick="submitForm()" style="text-align: center"><%= button.getLabel() %></button>
+<button onclick="submitForm()" style="text-align: center"><%=button.getLabel()%></button>
 </div>
 
 <%
-    if (application.getAttribute("dataAdded") == null) {
+    String errormsg="";
+
+    if (application.getAttribute("dataAdded") == null) {//Permet d'éviter d'ajouter le jeu de données sur la table rdv plusieurs fois à la
         RemplitDatabase();
         application.setAttribute("dataAdded", true);
+        System.out.println("CHECK "+application.getAttribute("errormsg"));
+        if (application.getAttribute("errormsg") != null)//Récupère le message d'erreur si il est set
+        {
+            errormsg = application.getAttribute("errormsg").toString();
+        }
     }
 
-    DefaultTableModel model = new DefaultTableModel(new Object[][] {},
-            new String[] { "Date ", "Heure", "Client", "Employé" });
+    System.out.println("Etat du msg =>"+errormsg);
 
 
-        // fetch all RendezVous objects from the database
-        List<RendezVous> rendezVousList = new QueryRdv().findAllElmt();
+    DefaultTableModel model = new DefaultTableModel(new Object[][]{},
+            new String[]{"Date ", "Heure", "Client", "Employé"});
 
-        // iterate over the list of RendezVous objects and add them to the table model
-        for (RendezVous rendezVous : rendezVousList) {
-            Object[] rowData = { rendezVous.getDate_rdv(), rendezVous.getHeure_rdv(), rendezVous.getNom_client(), rendezVous.getNom_employe() };
-            model.addRow(rowData);
-        }
+
+    // Récupère la liste des rendez vous
+    List<RendezVous> rendezVousList = new QueryRdv().findAllElmt();
+
+    // Ajoute chaque rdv au model pour le tableau
+    for (RendezVous rendezVous : rendezVousList) {
+        Object[] rowData = {rendezVous.getDate_rdv(), rendezVous.getHeure_rdv(), rendezVous.getNom_client(), rendezVous.getNom_employe()};
+        model.addRow(rowData);
+    }
 
 
     Tableau table = new Tableau(model);
     String htmltable = table.AfficherJSP();
 %>
 
-<%= htmltable %>
+<%=htmltable%>
 
+<div class="erreur" id="erreur">
+    <%=MessageServeur.msg%>
+</div>
+<script src="javascript/clearmsg.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ public class OutilsDatesHeures {
      * Vérifie si une date est bien au format dd/mm/yyyy
      * @return
      */
-    static public boolean isFormatddMMyyyy(String formatdate)
+    static private boolean isFormatddMMyyyy(String formatdate)
     {
         String regex = "^\\d{2}/\\d{2}/\\d{4}$";
         return Pattern.matches(regex, formatdate);
@@ -88,7 +88,7 @@ public class OutilsDatesHeures {
             Date time = formatter.parse(input);
            if(time!=null)return true;
         } catch (ParseException e) {
-            System.out.println("Invalid time format");
+            System.out.println("Format heure incorrect");
         }
 
         return false;

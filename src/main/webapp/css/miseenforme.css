@@ -8,7 +8,7 @@ h1
 {
     font-weight: lighter;
 }
-.stylebtn,.styleform,h1
+.stylebtn,.styleform,h1,.erreur
 {
     text-align: center
 }
@@ -24,4 +24,10 @@ input
 {
     margin-bottom: 1.5vh;
     margin-top:1vh
+}
+.erreur
+{
+    font-size: 25px;
+    color: red;
+    font-weight: bolder;
 }

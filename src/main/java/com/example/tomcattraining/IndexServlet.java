@@ -2,6 +2,7 @@ package com.example.tomcattraining;
 
 
 import com.example.tomcattraining.metiers.RendezVous;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 
 import java.io.*;
@@ -37,26 +38,45 @@ public class IndexServlet extends HttpServlet {
         System.out.println("Valeur saisie : "+nomclient+"/"+nomemploye+"/"+rdvdate+"/"+heure+"/"+idrdv);
         RendezVous ajoutRdv = new RendezVous(nomemploye,nomclient,rdvdate,heure);
         System.out.println("Rdv crée : "+ajoutRdv);
-        response.sendRedirect("index.jsp");
+
 
         if(!idrdv.equals("null")) //Cas mise à jour
         {
             RendezVous updateRdv = ajoutRdv;
             updateRdv.setId(Integer.parseInt(idrdv)+1);//Permet d'assurer la recherche de l'id
-            new QueryRdv().updateItem(updateRdv);
+            boolean etat = new QueryRdv().updateItem(updateRdv);
+            if(etat == false)
+            {
+                //EnvoieMsgErreurJsp(request,response); msg géré par la jsp avec du javascript
+            }
+             response.sendRedirect("index.jsp");
         }
         else
         {
             if(new QueryRdv().insertItem(ajoutRdv)==false)//Si l'ajout n'est pas réalisé
             {
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                response.getWriter().write("Failed to add rendezvous");
+               // EnvoieMsgErreurJsp(request,response);
             }
+            response.sendRedirect("index.jsp");//Si ajout correct alors redirect
         }
 
 
 
     }
     public void destroy() {
+    }
+
+    private void EnvoieMsgErreurJsp(HttpServletRequest request,HttpServletResponse response)
+    {
+        String sendedmsg=MessageServeur.msg;
+        request.setAttribute("errormsg",sendedmsg);
+        try {
+            System.out.println("Envoie du msg cote servlet "+sendedmsg);
+            request.getRequestDispatcher("index.jsp").forward(request, response);//Pour affichage dans l'index du msg d'erreur
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

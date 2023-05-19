@@ -52,6 +52,10 @@ public class Tableau {
         return tableau.getTableHeader();
     }
 
+    /**
+     * Conversion du tableau au format d'un tableau html
+     * @return : tableau balisé
+     */
     public String AfficherJSP() {
         StringBuilder sb = new StringBuilder();
         sb.append("<table class='table'>");
