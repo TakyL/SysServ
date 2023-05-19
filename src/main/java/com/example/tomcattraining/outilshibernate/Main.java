@@ -43,7 +43,7 @@ public class Main {
             // create a new user
             Utilisateur user = new Utilisateur("John", "Doe");
             Utilisateur user2 = new Utilisateur("Mary","Sue");
-            RendezVous rdv = new RendezVous(user.getNom(), user2.getNom(), "24/24/2024","10:11");
+            RendezVous rdv = new RendezVous(user.getNom(), user2.getNom(), "13/10/2010","10:11");
             RendezVous rdv1 = new RendezVous("Bonjour","Bonsoir","10/10/2010","10:25");
             session.save(rdv);
             session.save(rdv1);
