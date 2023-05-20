@@ -35,6 +35,9 @@ public class Main {
         }
     }
 
+    /**
+     * Permet de remplir la base de données avec quelques données
+     */
     public static void RemplitDatabase()
     {
         try (Session session = OutilsHibernate.getSession()) {

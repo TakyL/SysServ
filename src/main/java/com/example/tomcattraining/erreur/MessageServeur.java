@@ -1,5 +1,8 @@
 package com.example.tomcattraining.erreur;
 
+/**
+ * Classe permettant d'afficher un message d'erreur côté client
+ */
 public class MessageServeur {
 
     private final String msg_RDV_existe="Ce rendez-vous existe déjà";

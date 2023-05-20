@@ -12,12 +12,7 @@ public class Tableau {
     private final JTable tableau;
 
     public Tableau(DefaultTableModel model) {
-        // Create a new table model with 0 rows and 4 columns
-   //     DefaultTableModel model = new DefaultTableModel(new Object[][] {},
-      //          new String[] { "Date ", "Heure", "Client", "Employé" });
-        // Create a new JTable with the custom table model
         tableau = new JTable(model);
-
     }
 
     public JTable getTableau() {
@@ -71,7 +66,7 @@ public class Tableau {
             sb.append("</th>");
         }
         sb.append("</tr>");
-        // Print the table data
+        // Affichage des données des rdv
         for (int i = 0; i < getRowCount(); i++) {
             sb.append("<tr>");
             String st = String.format("<td><input type='radio' id='r%d'></td>",i);

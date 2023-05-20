@@ -34,6 +34,10 @@ public class RendezVous implements Serializable {
             this.date_rdv = formateDate(date_rdv);
             this.heure_rdv = heure_rdv;
         }
+        else
+        {
+            throw new IllegalArgumentException("Les arguments fournis pour construire un objet rdv ne remplissent les conditions");
+        }
     }
 
     public RendezVous()
@@ -42,12 +46,12 @@ public class RendezVous implements Serializable {
     }
 
     /**
-     * Vérifie si tout est ok
+     * Vérifie si la saisie d'un rendez vous remplit les différentes conditions : heure/date au format valide et que les chaines de caratères transmises soient non null
      * @param nom_employe
      * @param nom_client
      * @param date
      * @param heure
-     * @return
+     * @return faux si les conditions ne sont pas respectés
      */
 
     private boolean Controle(String nom_employe,String nom_client,String date,String heure)

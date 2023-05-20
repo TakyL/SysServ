@@ -44,19 +44,11 @@
 </div>
 
 <%
-    String errormsg="";
 
-    if (application.getAttribute("dataAdded") == null) {//Permet d'éviter d'ajouter le jeu de données sur la table rdv plusieurs fois à la
+    if (application.getAttribute("dataAdded") == null) {//Permet d'éviter d'ajouter le jeu de données sur la table rdv plusieurs fois
         RemplitDatabase();
         application.setAttribute("dataAdded", true);
-        System.out.println("CHECK "+application.getAttribute("errormsg"));
-        if (application.getAttribute("errormsg") != null)//Récupère le message d'erreur si il est set
-        {
-            errormsg = application.getAttribute("errormsg").toString();
-        }
     }
-
-    System.out.println("Etat du msg =>"+errormsg);
 
 
     DefaultTableModel model = new DefaultTableModel(new Object[][]{},

@@ -10,6 +10,10 @@ public class OutilsHibernate {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
+    /**
+     * Construit la config pour hibernate
+     * @return
+     */
     private static SessionFactory buildSessionFactory() {
         try {
             Configuration configuration = new Configuration();
@@ -24,7 +28,7 @@ public class OutilsHibernate {
             return configuration.buildSessionFactory();
         }
         catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            System.err.println("Session factory echec :" + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
