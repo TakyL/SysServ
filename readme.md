@@ -1,9 +1,9 @@
 # SUJET 
 Sujet selectionné : Sujet 2 : Annuaire
 - Base de données : H2
-- Java/jsp
+- Java 17  et jsp
 - Hibernate
-
+- Tomcat 10.1.6
 
 ## Fonctionnalités présentes
 
