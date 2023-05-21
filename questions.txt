@@ -1,0 +1,28 @@
+Questions :
+1.Maven permet de gérer les dépendances d'un projet
+2.
+.mvn
+pom.xml
+src
+     main
+               java
+	 ressources
+	 webapp
+     test
+target
+3.Artifictid  /groupid/ version
+4. Deux concurrents à maven sont : graddle et ant
+5.Acronyme de test driven developpement. Il s'agit d'un concept où l'on réalise d'abord les tests avant de coder la fonctionnalité
+6.
+/Single Responsibility Principle
+/Open Closed
+/Liskov Substitution
+/Interface segregation
+/Dependency inversion
+7.TOMCAT/JETTY/Glassfish
+8. il se trouve dans le fichier web.xml dans le dossier WEB-INF
+9. Les 3 directives sont :
+-page : permet de définir des options de configuration
+-include :permet d'inclure des fichiers dans la JSP
+-tagblib :permet de réaliser des tags
+10.Docker permet de lancer des applications. Docker utilise des conteneurs qui utilise des images dockers. Ces images contiennent tout ce qu’il faut pour faire fonctionner l’application
