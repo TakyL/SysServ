@@ -5,6 +5,11 @@ Sujet selectionné : Sujet 2 : Annuaire
 - Hibernate
 - Tomcat 10.1.6
 
+
+## Lancement du projet
+
+Lancer un serveur Tomcat ayant une version 10.1.6 ou équivalente.
+
 ## Fonctionnalités présentes
 
 Ajout/Modification et affichage de la liste des rendez-vous<br>
